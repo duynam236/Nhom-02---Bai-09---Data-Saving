@@ -10,10 +10,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.my_code.R;
+
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -38,7 +41,7 @@ public class InternalStorage extends Activity implements View.OnClickListener {
 
         ContextWrapper contextWrapper = new ContextWrapper(getApplicationContext()); // Lấy context của ứng dụng
 
-        // Lấy ra đường dẫn của thư mục "MyDirectory", cài đặt chế độ MODE_PRIVATE cho thư mục này
+        // Tạo (Hoặc mở nếu đã tồn tại) đường dẫn của thư mục "MyDirectory", cài đặt chế độ MODE_PRIVATE cho thư mục này
         File directory = contextWrapper.getDir(filepath, Context.MODE_PRIVATE);
 //        File directory = contextWrapper.getDir(filepath, Context.MODE_APPEND);
 
@@ -62,7 +65,8 @@ public class InternalStorage extends Activity implements View.OnClickListener {
                 fos.close();
                 myInputText.setText("");
                 // Hiện thông báo Toast
-                Toast.makeText(this, "Ghi dữ liệu vào file " + filename + " thành công!!!", Toast.LENGTH_LONG);
+                Toast.makeText(this, "Ghi dữ liệu vào file " + filename + " thành công!!!", Toast.LENGTH_SHORT).show();
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -77,7 +81,7 @@ public class InternalStorage extends Activity implements View.OnClickListener {
                 String strLine;
                 String myData = "";
                 while ((strLine = br.readLine()) != null) {
-                    myData = myData + strLine;
+                    myData = myData + "\r\n" + strLine;
                 }
                 in.close();
 
@@ -85,7 +89,7 @@ public class InternalStorage extends Activity implements View.OnClickListener {
                 responseText.setText(myData);
 
                 // Hiện thông báo Toast
-                Toast.makeText(this, "Đọc dữ liệu từ file " + filename + " thành công!!!", Toast.LENGTH_LONG);
+                Toast.makeText(this, "Đọc dữ liệu từ file " + filename + " thành công!!!", Toast.LENGTH_SHORT).show();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
