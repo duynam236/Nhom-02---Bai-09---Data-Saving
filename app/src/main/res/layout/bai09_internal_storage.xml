@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save file into storage"
+        android:textSize="16dp"/>
+
+    <EditText
+        android:id="@+id/myInputText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:lines="5"
+        android:ems="10"
+        android:minLines="3">
+        <requestFocus/>
+    </EditText>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/btnSave"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Save" />
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/btnDisplay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Get data" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/responseText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+</LinearLayout>
